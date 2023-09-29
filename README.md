@@ -15,5 +15,7 @@ docker compose up -d
 docker exec py_docker-app-1 python main.py
 ```
 
-※以下のURLにアクセスしてGUI画面を確認できます。
-
+※以下のURLにアクセスしてGUI画面を確認できます。(ログインパスワードはsecret)
+```
+http://localhost:7999/
+```
