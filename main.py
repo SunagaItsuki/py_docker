@@ -2,9 +2,18 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 import time
 
+# envファイルの読み込み
+load_dotenv(verbose=True)
 
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+
+# driverの設定
 driver = webdriver.Remote(
     command_executor = os.environ["SELENIUM_URL"],
     options = webdriver.ChromeOptions()
@@ -15,7 +24,7 @@ driver.implicitly_wait(10)
 # ログイン処理
 url = "https://scraping-for-beginner.herokuapp.com/login_page"
 username = "imanishi"
-password = "kohei"
+password = os.environ.get("LOGIN_PASS") # .envファイルから読み込んだ値を代入
 
 driver.get(url)
 # ユーザー名とパスワードを入力
